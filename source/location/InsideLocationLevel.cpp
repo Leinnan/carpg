@@ -207,11 +207,12 @@ void InsideLocationLevel::SaveLevel(GameWriter& f)
 	for(RoomGroup& group : groups)
 		group.Save(f);
 
-	f << staircase_up;
-	f << staircase_down;
-	f << staircase_up_dir;
-	f << staircase_down_dir;
-	f << staircase_down_in_wall;
+	f << prevLevel;
+	f << nextLevel;
+	f << prevLevelDir;
+	f << nextLevelDir;
+	//f << staircase_down_in_wall;
+	FIXME;
 }
 
 //=================================================================================================
@@ -295,16 +296,17 @@ void InsideLocationLevel::LoadLevel(GameReader& f)
 		LevelArea::Load(f, old::LoadCompatibility::InsideLocationLevelTraps);
 	}
 
-	f >> staircase_up;
-	f >> staircase_down;
-	f >> staircase_up_dir;
-	f >> staircase_down_dir;
-	f >> staircase_down_in_wall;
+	f >> prevLevel;
+	f >> nextLevel;
+	f >> prevLevelDir;
+	f >> nextLevelDir;
+	//f >> staircase_down_in_wall;
+	FIXME;
 }
 
 //=================================================================================================
 // If no_target is true it will ignore rooms that have target
-Room& InsideLocationLevel::GetFarRoom(bool have_down_stairs, bool no_target)
+/*Room& InsideLocationLevel::GetFarRoom(bool have_down_stairs, bool no_target)
 {
 	if(have_down_stairs)
 	{
@@ -347,7 +349,8 @@ Room& InsideLocationLevel::GetFarRoom(bool have_down_stairs, bool no_target)
 
 		return *best;
 	}
-}
+}*/
+FIXME
 
 //=================================================================================================
 Door* InsideLocationLevel::FindDoor(const Int2& pt) const

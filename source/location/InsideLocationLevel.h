@@ -20,9 +20,10 @@ struct InsideLocationLevel : public LevelArea
 	int w, h;
 	vector<Room*> rooms;
 	vector<RoomGroup> groups;
-	Int2 staircase_up, staircase_down;
-	GameDirection staircase_up_dir, staircase_down_dir;
-	bool staircase_down_in_wall;
+	Int2 prevLevel, nextLevel; // tile with doors/stairs
+	GameDirection prevLevelDir, nextLevelDir;
+	//bool staircase_down_in_wall;
+	FIXME;
 
 	InsideLocationLevel(int area_id) : LevelArea(LevelArea::Type::Inside, area_id, false), map(nullptr) {}
 	~InsideLocationLevel();
@@ -32,14 +33,14 @@ struct InsideLocationLevel : public LevelArea
 	Vec3 GetRandomPos() const { return Vec3(Random(2.f*w), 0, Random(2.f*h)); }
 	Room* GetNearestRoom(const Vec3& pos);
 	Room* FindEscapeRoom(const Vec3& my_pos, const Vec3& enemy_pos);
-	Int2 GetUpStairsFrontTile() const { return staircase_up + DirToPos(staircase_up_dir); }
-	Int2 GetDownStairsFrontTile() const { return staircase_down + DirToPos(staircase_down_dir); }
+	//Int2 GetUpStairsFrontTile() const { return staircase_up + DirToPos(staircase_up_dir); }
+	//Int2 GetDownStairsFrontTile() const { return staircase_down + DirToPos(staircase_down_dir); }
 	Room* GetRandomRoom() { return rooms[Rand() % rooms.size()]; }
 	bool GetRandomNearWallTile(const Room& room, Int2& tile, GameDirection& rot, bool nocol = false);
 	Room& GetFarRoom(bool have_down_stairs, bool no_target = false);
 	Room* GetRoom(const Int2& pt);
-	Room* GetUpStairsRoom() { return GetRoom(staircase_up); }
-	Room* GetDownStairsRoom() { return GetRoom(staircase_down); }
+	//Room* GetUpStairsRoom() { return GetRoom(staircase_up); }
+	//Room* GetDownStairsRoom() { return GetRoom(staircase_down); }
 	Room* GetRandomRoom(RoomTarget target, delegate<bool(Room&)> clbk, int* index, int* group);
 	pair<Room*, Room*> GetConnectingRooms(RoomGroup* group1, RoomGroup* group2);
 

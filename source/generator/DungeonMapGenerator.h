@@ -13,6 +13,12 @@ struct MapSettings
 		SHAPE_CIRCLE
 	};
 
+	enum StairsType
+	{
+		STAIRS_NONE,
+		STAIRS
+	};
+
 	enum StairsLocation
 	{
 		STAIRS_NONE,
