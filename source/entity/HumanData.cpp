@@ -190,6 +190,6 @@ void HumanData::Random()
 	beard = Rand() % MAX_BEARD - 1;
 	hair = Rand() % MAX_HAIR - 1;
 	mustache = Rand() % MAX_MUSTACHE - 1;
-	height = ::Random(0.9f, 1.1f);
+	height = ::Random(MIN_HEIGHT, MAX_HEIGHT);
 	hair_color = g_hair_colors[Rand() % n_hair_colors];
 }

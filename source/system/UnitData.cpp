@@ -101,6 +101,7 @@ void UnitData::CopyFrom(UnitData& ud)
 	clas = ud.clas;
 	trader = nullptr; // not copied
 	tint = ud.tint;
+	appearance = ud.appearance;
 }
 
 int UnitData::GetLevelDif(int level) const
